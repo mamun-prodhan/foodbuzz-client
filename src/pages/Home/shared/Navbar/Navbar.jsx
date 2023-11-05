@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Button from "../Button/Button";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
@@ -35,7 +35,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="shadow-md w-full fixed top-0 left-0">
+    <div className="shadow-md w-full">
       <div className="md:flex items-center justify-between bg-white py-4 md:px-10 px-7  ">
         <div className="font-bold text-2xl cursor-pointer flex items-center text-gray-800">
           <span>Logo</span>
@@ -43,6 +43,12 @@ const Navbar = () => {
         </div>
         <ul className="md:flex md:items-center gap-5 hidden">{navLinks}</ul>
         <div className="pb-12 md:pb-0 hidden md:block">
+          <Link to="/login">
+            <Button>Login</Button>
+          </Link>
+          <Link to="/register">
+            <Button>Register</Button>
+          </Link>
           <Button>Logout</Button>
         </div>
         {/* for mobile responsive */}
@@ -57,13 +63,15 @@ const Navbar = () => {
           )}
         </div>
         <div
-          className={`md:hidden absolute bg-blue-200 z-[-1] left-0 w-full pl-9 transition-all duration-500 ease-in ${
+          className={`md:hidden absolute bg-blue-600 left-0 w-full pl-9 transition-all duration-500 ease-in ${
             open ? "top-16 opacity-100" : "top-[-490px]"
           } opacity-0`}
         >
           <ul className="md:flex md:items-center gap-5">{navLinks}</ul>
-          <div className="pb-12 md:pb-0">
-            <Button>Logout</Button>
+          <div className="pb-12 md:pb-0 flex gap-5">
+            <Button>Login</Button>
+            <Button>Register</Button>
+            {/* <Button>Logout</Button> */}
           </div>
         </div>
       </div>
