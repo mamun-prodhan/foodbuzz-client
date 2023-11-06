@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const Navbar = () => {
   let [open, setOpen] = useState(false);
-  const { logOut } = useAuth();
+  const { logOut, user } = useAuth();
 
   const handleSignOut = () => {
     logOut()
@@ -61,22 +61,42 @@ const Navbar = () => {
         </div>
         <ul className="md:flex md:items-center gap-5 hidden">{navLinks}</ul>
         <div className="pb-12 md:pb-0 hidden md:block">
-          <Link to="/login">
-            <button className="bg-indigo-600 text-white py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 duration-500">
-              Login
-            </button>
-          </Link>
-          <Link to="/register">
-            <button className="bg-indigo-600 text-white py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 duration-500">
-              Register
-            </button>
-          </Link>
-          <button
-            onClick={handleSignOut}
-            className="bg-indigo-600 text-white py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 duration-500"
-          >
-            Logout
-          </button>
+          {!user && (
+            <>
+              <Link to="/login">
+                <button className="bg-indigo-600 text-white py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 duration-500">
+                  Login
+                </button>
+              </Link>
+              <Link to="/register">
+                <button className="bg-indigo-600 text-white py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 duration-500">
+                  Register
+                </button>
+              </Link>
+            </>
+          )}
+          {user && (
+            <div className="flex items-center">
+              <div className="flex items-center gap-2">
+                <img
+                  className="h-8 w-8 rounded-full border-2"
+                  src={user.photoURL}
+                  alt=""
+                />
+                <p>
+                  {user.displayName.length > 6
+                    ? user.displayName.slice(0, 6) + "..."
+                    : user.displayName}
+                </p>
+              </div>
+              <button
+                onClick={handleSignOut}
+                className="bg-indigo-600 text-white py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 duration-500"
+              >
+                Logout
+              </button>
+            </div>
+          )}
         </div>
         {/* for mobile responsive */}
         <div
