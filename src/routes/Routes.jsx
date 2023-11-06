@@ -5,6 +5,8 @@ import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import AddBlogs from "../pages/AddBlogs/AddBlogs";
 import PrivateRoute from "./PrivateRoute";
+import BlogDetails from "../pages/Home/Home/BlogDetails";
+import AllBlogs from "../pages/AllBlogs/AllBlogs";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
             <AddBlogs></AddBlogs>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/blogdetails/:id",
+        element: <BlogDetails></BlogDetails>,
+      },
+      {
+        path: "/allblogs",
+        element: <AllBlogs></AllBlogs>,
       },
       {
         path: "/login",

@@ -1,7 +1,7 @@
 import { Button, Card } from "flowbite-react";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const RecentBlogCard = ({ blog }) => {
@@ -98,7 +98,9 @@ const RecentBlogCard = ({ blog }) => {
         in reverse chronological order.
       </p>
       <div className="flex gap-10">
-        <Button>Details</Button>
+        <Link to={`/blogdetails/${_id}`}>
+          <Button>Details</Button>
+        </Link>
         <Button onClick={handleAddToWishlist}>Add to Wishlist</Button>
       </div>
     </Card>
