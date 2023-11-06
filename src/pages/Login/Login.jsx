@@ -1,9 +1,8 @@
 import { Button, Label, TextInput } from "flowbite-react";
-import AuthProvider, { AuthContext } from "../../providers/AuthProvider";
-import { useContext } from "react";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
-  const { myName } = useContext(AuthContext);
+  const { myName } = useAuth();
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
