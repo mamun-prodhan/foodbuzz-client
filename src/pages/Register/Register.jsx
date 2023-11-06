@@ -1,14 +1,64 @@
 import { Button, Label, TextInput } from "flowbite-react";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Register = () => {
-  const handleRegister = (event) => {
-    event.preventDefault();
-    const form = event.target;
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const { createUser, updateUser } = useAuth();
+  const navigate = useNavigate();
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = e.target;
     const name = form.name.value;
     const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
+    // console.log(name, photoURL, email, password);
+    setError("");
+    setSuccess("");
+    // password validation checking
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      setError("Don't have a capital letter");
+      return;
+    } else if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\/\|]/.test(password)) {
+      setError("Don't have a special character");
+      return;
+    }
     console.log(name, photoURL, email, password);
+    // create user using email and password
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        updateUser(name, photoURL)
+          .then(() => {
+            console.log("Profile Updated");
+            setSuccess("Successfully Registered");
+            Swal.fire({
+              title: "Register Successfull",
+              text: "You have registered successfully.",
+              icon: "success",
+              // button: "OK",
+            }).then(() => {
+              navigate("/");
+              setTimeout(() => {
+                window.location.reload();
+              }, 100);
+            });
+          })
+          .catch((error) => console.log(error));
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.message);
+      });
+    // create user catch
   };
   return (
     <div>
@@ -65,8 +115,16 @@ const Register = () => {
             required
           />
         </div>
+        {error && <p className="text-red-400 font-bold my-4">{error}</p>}
+        {success && <p className="text-green-400 font-bold my-4">{success}</p>}
         <Button type="submit">Register</Button>
       </form>
+      <p className="font-bold py-4 text-center">
+        Already have an account ? Please{" "}
+        <Link to="/login" className="text-[#FF6251]">
+          Login
+        </Link>
+      </p>
     </div>
   );
 };
