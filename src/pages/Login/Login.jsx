@@ -1,6 +1,9 @@
 import { Button, Label, TextInput } from "flowbite-react";
+import AuthProvider, { AuthContext } from "../../providers/AuthProvider";
+import { useContext } from "react";
 
 const Login = () => {
+  const { myName } = useContext(AuthContext);
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -10,7 +13,9 @@ const Login = () => {
   };
   return (
     <div>
-      <h2 className="text-5xl font-bold text-center mt-10">Please Register</h2>
+      <h2 className="text-5xl font-bold text-center mt-10">
+        Please Login {myName}
+      </h2>
       <form
         onSubmit={handleLogin}
         className="flex max-w-md flex-col gap-4 mx-auto mt-20"
