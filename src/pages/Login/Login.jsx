@@ -1,46 +1,20 @@
 import { Button, Label, TextInput } from "flowbite-react";
 
-const Register = () => {
-  const handleRegister = (event) => {
+const Login = () => {
+  const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
-    const name = form.name.value;
-    const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, photoURL, email, password);
+    console.log(email, password);
   };
   return (
     <div>
       <h2 className="text-5xl font-bold text-center mt-10">Please Register</h2>
       <form
-        onSubmit={handleRegister}
+        onSubmit={handleLogin}
         className="flex max-w-md flex-col gap-4 mx-auto mt-20"
       >
-        <div>
-          <div className="mb-2 block">
-            <Label htmlFor="name" value="Your Name" />
-          </div>
-          <TextInput
-            id="name"
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            required
-          />
-        </div>
-        <div>
-          <div className="mb-2 block">
-            <Label htmlFor="photoURL" value="Enter Photo URL" />
-          </div>
-          <TextInput
-            id="photoURL"
-            type="text"
-            placeholder="Photo URL"
-            name="photoURL"
-            required
-          />
-        </div>
         <div>
           <div className="mb-2 block">
             <Label htmlFor="email" value="Your email" />
@@ -67,8 +41,13 @@ const Register = () => {
         </div>
         <Button type="submit">Register</Button>
       </form>
+      <div className="max-w-md mx-auto mt-3">
+        <Button className="w-full" type="submit">
+          Google
+        </Button>
+      </div>
     </div>
   );
 };
 
-export default Register;
+export default Login;
