@@ -1,9 +1,13 @@
 import { Button, Card } from "flowbite-react";
 import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const RecentBlogCard = ({ blog }) => {
   //   console.log(Object.keys(blog).join(","));
   const { user } = useAuth();
+  const navigate = useNavigate();
   const {
     _id,
     title,
@@ -27,10 +31,53 @@ const RecentBlogCard = ({ blog }) => {
   const uploadedTime = isoDate.toLocaleString(undefined, options);
   console.log(uploadedTime);
 
+  const myWishlist = {
+    email: user?.email,
+    _id,
+    title,
+    imageURL,
+    category,
+    shortDescription,
+    longDescription,
+    createdAt,
+    uploadedTime,
+  };
+
   //   handle add to wishlist
   const handleAddToWishlist = () => {
     if (user) {
-      console.log("now add to wishlist");
+      console.log("now add to wishlist", myWishlist);
+      //   axios post here
+      axios
+        .post("http://localhost:5000/wishlist", myWishlist)
+        .then((res) => {
+          console.log(res?.data);
+          if (res?.data?.insertedId) {
+            Swal.fire({
+              title: "Successfull",
+              text: "Successfully added to wishlist",
+              icon: "success",
+            });
+          } else if (res?.data?.code === 11000) {
+            console.log("data already exist in database");
+            Swal.fire({
+              title: "Already Exists",
+              text: "Already You Have added in wishlist",
+              icon: "error",
+            });
+          }
+        })
+        .catch((error) => {
+          console.log("Axios error in recent blog card", error);
+        });
+    }
+    if (!user) {
+      Swal.fire({
+        title: "Please Login",
+        text: "You have to login to add wishlist",
+        icon: "warning",
+      });
+      navigate("/login");
     }
   };
 
