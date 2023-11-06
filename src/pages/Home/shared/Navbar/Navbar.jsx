@@ -1,10 +1,28 @@
 import { Link, NavLink } from "react-router-dom";
-import Button from "../Button/Button";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
+import useAuth from "../../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   let [open, setOpen] = useState(false);
+  const { logOut } = useAuth();
+
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {
+        console.log("Logout successfully");
+        Swal.fire({
+          title: "Successfull",
+          text: "Logout successfully",
+          icon: "success",
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   let navLinks = (
     <>
       <li className="md:ml-8 text-xl md:my-0 my-7">
@@ -44,12 +62,21 @@ const Navbar = () => {
         <ul className="md:flex md:items-center gap-5 hidden">{navLinks}</ul>
         <div className="pb-12 md:pb-0 hidden md:block">
           <Link to="/login">
-            <Button>Login</Button>
+            <button className="bg-indigo-600 text-white py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 duration-500">
+              Login
+            </button>
           </Link>
           <Link to="/register">
-            <Button>Register</Button>
+            <button className="bg-indigo-600 text-white py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 duration-500">
+              Register
+            </button>
           </Link>
-          <Button>Logout</Button>
+          <button
+            onClick={handleSignOut}
+            className="bg-indigo-600 text-white py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 duration-500"
+          >
+            Logout
+          </button>
         </div>
         {/* for mobile responsive */}
         <div
@@ -70,10 +97,10 @@ const Navbar = () => {
           <ul className="md:flex md:items-center gap-5">{navLinks}</ul>
           <div className="pb-12 md:pb-0 flex gap-5">
             <Link to="/login">
-              <Button>Login</Button>
+              <button>Login</button>
             </Link>
             <Link to="/register">
-              <Button>Register</Button>
+              <button>Register</button>
             </Link>
             {/* <Button>Logout</Button> */}
           </div>
