@@ -5,11 +5,32 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const Login = () => {
-  const { signIn } = useAuth();
+  const { signIn, googleSignIn } = useAuth();
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
+
+  const handleGoogleSignIn = () => {
+    setError("");
+    setSuccess("");
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        setSuccess("successfully logged In");
+        navigate(location?.state ? location.state : "/");
+        Swal.fire({
+          title: "Successfull",
+          text: "You have successfully logged In",
+          icon: "success",
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.message);
+      });
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -72,8 +93,8 @@ const Login = () => {
       </form>
 
       <div className="max-w-md mx-auto mt-3">
-        <Button className="w-full" type="submit">
-          Google
+        <Button onClick={handleGoogleSignIn} className="w-full" type="submit">
+          Google Sign In
         </Button>
       </div>
       <p className="font-bold py-4 text-center">
