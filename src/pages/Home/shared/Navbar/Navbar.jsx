@@ -69,8 +69,12 @@ const Navbar = () => {
         >
           <ul className="md:flex md:items-center gap-5">{navLinks}</ul>
           <div className="pb-12 md:pb-0 flex gap-5">
-            <Button>Login</Button>
-            <Button>Register</Button>
+            <Link to="/login">
+              <Button>Login</Button>
+            </Link>
+            <Link to="/register">
+              <Button>Register</Button>
+            </Link>
             {/* <Button>Logout</Button> */}
           </div>
         </div>

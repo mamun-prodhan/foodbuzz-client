@@ -1,20 +1,43 @@
 import { Button, Label, TextInput } from "flowbite-react";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Login = () => {
-  const { myName } = useAuth();
-  const handleLogin = (event) => {
-    event.preventDefault();
-    const form = event.target;
+  const { signIn } = useAuth();
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+    setError("");
+    setSuccess("");
+    signIn(email, password)
+      .then((result) => {
+        console.log(result.user);
+        setSuccess("Successfully logged in");
+        navigate(location?.state ? location.state : "/");
+        Swal.fire({
+          title: "Successfull",
+          text: "You have successfully logged In",
+          icon: "success",
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.message);
+      });
   };
   return (
     <div>
-      <h2 className="text-5xl font-bold text-center mt-10">
-        Please Login {myName}
-      </h2>
+      <h2 className="text-5xl font-bold text-center mt-10">Please Login</h2>
       <form
         onSubmit={handleLogin}
         className="flex max-w-md flex-col gap-4 mx-auto mt-20"
@@ -43,13 +66,22 @@ const Login = () => {
             required
           />
         </div>
-        <Button type="submit">Register</Button>
+        {error && <p className="text-red-400 font-bold my-4">{error}</p>}
+        {success && <p className="text-green-400 font-bold my-4">{success}</p>}
+        <Button type="submit">Login</Button>
       </form>
+
       <div className="max-w-md mx-auto mt-3">
         <Button className="w-full" type="submit">
           Google
         </Button>
       </div>
+      <p className="font-bold py-4 text-center">
+        New to this Website ? Please{" "}
+        <Link to="/register" className="text-[#FF6251]">
+          Register
+        </Link>
+      </p>
     </div>
   );
 };
