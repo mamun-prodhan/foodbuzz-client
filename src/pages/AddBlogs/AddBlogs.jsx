@@ -1,4 +1,6 @@
+import axios from "axios";
 import { Button, Label, Select, TextInput, Textarea } from "flowbite-react";
+import Swal from "sweetalert2";
 
 const AddBlogs = () => {
   const handleCategory = (e) => {
@@ -9,14 +11,27 @@ const AddBlogs = () => {
     const category = form.category.value;
     const shortDescription = form.shortDescription.value;
     const longDescription = form.longDescription.value;
-    const blogData = {
+    const currentDate = new Date();
+    const blog = {
       title,
       imageURL,
       category,
       shortDescription,
       longDescription,
+      createdAt: currentDate,
     };
-    console.log(blogData);
+    console.log(blog);
+    axios.post("http://localhost:5000/blogs", blog).then((res) => {
+      console.log(res?.data);
+      if (res?.data?.insertedId) {
+        Swal.fire({
+          title: "Successfull",
+          text: "Blog Posted Successfully",
+          icon: "success",
+        });
+        form.reset();
+      }
+    });
   };
   return (
     <div>
