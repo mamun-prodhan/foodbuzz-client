@@ -26,28 +26,43 @@ const Navbar = () => {
   let navLinks = (
     <>
       <li className="md:ml-8 text-xl md:my-0 my-7">
-        <NavLink className="text-gray-800 hover:text-gray-400 duration-500">
+        <NavLink
+          to="/"
+          className="text-gray-800 hover:text-gray-400 duration-500"
+        >
           Home
         </NavLink>
       </li>
       <li className="md:ml-8 text-xl md:my-0 mb-7">
-        <NavLink className="text-gray-800 hover:text-gray-400 duration-500">
-          Services
+        <NavLink
+          to="/addblogs"
+          className="text-gray-800 hover:text-gray-400 duration-500"
+        >
+          Add Blogs
         </NavLink>
       </li>
       <li className="md:ml-8 text-xl md:my-0 mb-7">
-        <NavLink className="text-gray-800 hover:text-gray-400 duration-500">
-          About
+        <NavLink
+          to="allblogs"
+          className="text-gray-800 hover:text-gray-400 duration-500"
+        >
+          All Blogs
         </NavLink>
       </li>
       <li className="md:ml-8 text-xl md:my-0 mb-7">
-        <NavLink className="text-gray-800 hover:text-gray-400 duration-500">
-          Blogs
+        <NavLink
+          to="/featuredblogs"
+          className="text-gray-800 hover:text-gray-400 duration-500"
+        >
+          Featured Blogs
         </NavLink>
       </li>
       <li className="md:ml-8 text-xl md:my-0 mb-7">
-        <NavLink className="text-gray-800 hover:text-gray-400 duration-500">
-          Contact
+        <NavLink
+          to="/wishlist"
+          className="text-gray-800 hover:text-gray-400 duration-500"
+        >
+          Wishlist
         </NavLink>
       </li>
     </>
