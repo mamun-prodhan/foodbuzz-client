@@ -94,8 +94,9 @@ const RecentBlogCard = ({ blog }) => {
       </p>
 
       <p className="font-normal text-gray-700 dark:text-gray-400">
-        Here are the biggest enterprise technology acquisitions of 2021 so far,
-        in reverse chronological order.
+        {shortDescription.length > 120
+          ? `${shortDescription.slice(0, 120)}...`
+          : shortDescription}
       </p>
       <div className="flex gap-10">
         <Link to={`/blogdetails/${_id}`}>

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-const useAllBlogs = (selectedCategory, search) => {
+const useAllBlogs = (selectedCategory) => {
   console.log("useAllBlogs", selectedCategory);
   const { data, isLoading, isFetching, refetch } = useQuery({
     queryKey: ["allBlogs"],
@@ -9,7 +9,6 @@ const useAllBlogs = (selectedCategory, search) => {
       try {
         const res = await axios.post("http://localhost:5000/allblogs", {
           selectedCategory,
-          search,
         });
         return res.data;
       } catch (error) {
