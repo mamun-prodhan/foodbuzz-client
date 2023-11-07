@@ -5,6 +5,7 @@ import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
 import useGetComments from "../../../hooks/useGetComments";
 import Swal from "sweetalert2";
+import CommentCard from "./CommentCard";
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -84,7 +85,14 @@ const BlogDetails = () => {
             <h2 className="text-red-600 text-xl font-bold">Loading Comments</h2>
           </>
         ) : (
-          <div>{data2?.length}</div>
+          <>
+            {data2?.map((singleComment) => (
+              <CommentCard
+                key={singleComment._id}
+                singleComment={singleComment}
+              ></CommentCard>
+            ))}
+          </>
         )}
         {data?.email === user?.email ? (
           <>
