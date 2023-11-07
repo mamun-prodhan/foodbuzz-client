@@ -22,6 +22,8 @@ const AddBlogs = () => {
       longDescription,
       createdAt: currentDate,
       email: user?.email,
+      ownerName: user?.displayName,
+      ownerImage: user?.photoURL,
     };
     console.log(blog);
     axios.post("http://localhost:5000/blogs", blog).then((res) => {
