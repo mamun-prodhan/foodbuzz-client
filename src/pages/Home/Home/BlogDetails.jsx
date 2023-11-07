@@ -3,12 +3,24 @@ import useBlogDetails from "../../../hooks/useBlogDetails";
 import { Button, Card, Label, Textarea } from "flowbite-react";
 import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
+import useGetComments from "../../../hooks/useGetComments";
+import Swal from "sweetalert2";
 
 const BlogDetails = () => {
   const { id } = useParams();
   const { user } = useAuth();
   const url = `http://localhost:5000/allblogs/${id}`;
+  const url2 = `http://localhost:5000/comments/${id}`;
   const { data, isLoading, isFetching, refetch } = useBlogDetails(url);
+  //  get comments data
+  const {
+    data: data2,
+    isLoading: isLoading2,
+    isFetching: isFetching2,
+    refetch: refetch2,
+  } = useGetComments(url2);
+
+  console.log(data2);
 
   //   handle comment
   const handleComment = (e) => {
@@ -27,6 +39,15 @@ const BlogDetails = () => {
       .post("http://localhost:5000/comments", commentData)
       .then((res) => {
         console.log(res.data);
+        if (res.data.insertedId) {
+          refetch2();
+          e.target.reset();
+          Swal.fire({
+            title: "Successfull",
+            text: "Comment added successfully",
+            icon: "success",
+          });
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -58,6 +79,13 @@ const BlogDetails = () => {
       </Card>
       <Card>
         <h2 className="text-2xl font-bold mb-10">All Comments: </h2>
+        {isLoading2 ? (
+          <>
+            <h2 className="text-red-600 text-xl font-bold">Loading Comments</h2>
+          </>
+        ) : (
+          <div>{data2?.length}</div>
+        )}
         {data?.email === user?.email ? (
           <>
             <h2 className="font-bold">Cannot Comment on Own Blog</h2>

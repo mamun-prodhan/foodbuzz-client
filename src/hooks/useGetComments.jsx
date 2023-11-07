@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 
-const useGetComments = (url) => {
+const useGetComments = (url2) => {
   const { data, isLoading, isFetching, refetch } = useQuery({
     queryKey: ["allComments"],
     queryFn: async () => {
-      const data = await fetch(url);
+      const data = await fetch(url2);
       return await data.json();
     },
   });
