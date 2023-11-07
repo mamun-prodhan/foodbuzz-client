@@ -49,6 +49,9 @@ const AllBlogs = () => {
       <h2 className="text-5xl font-bold text-center my-10">
         All Blogs : {data?.length}
       </h2>
+      {!data.length && (
+        <h2 className="text-4xl font-bold text-center my-20">No Data Found</h2>
+      )}
       {/* search implement */}
       {/* filter */}
       <div className="w-40 my-10">

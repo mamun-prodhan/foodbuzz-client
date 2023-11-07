@@ -99,7 +99,7 @@ const Navbar = () => {
                   alt=""
                 />
                 <p>
-                  {user.displayName.length > 6
+                  {user?.displayName?.length > 6
                     ? user.displayName.slice(0, 6) + "..."
                     : user.displayName}
                 </p>

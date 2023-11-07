@@ -16,6 +16,7 @@ const RecentBlogCard = ({ blog }) => {
     shortDescription,
     longDescription,
     createdAt,
+    email,
   } = blog;
 
   // Format the date and time as a string

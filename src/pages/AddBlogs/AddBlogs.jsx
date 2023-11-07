@@ -1,8 +1,10 @@
 import axios from "axios";
 import { Button, Label, Select, TextInput, Textarea } from "flowbite-react";
 import Swal from "sweetalert2";
+import useAuth from "../../hooks/useAuth";
 
 const AddBlogs = () => {
+  const { user } = useAuth();
   const handleCategory = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -19,6 +21,7 @@ const AddBlogs = () => {
       shortDescription,
       longDescription,
       createdAt: currentDate,
+      email: user?.email,
     };
     console.log(blog);
     axios.post("http://localhost:5000/blogs", blog).then((res) => {
