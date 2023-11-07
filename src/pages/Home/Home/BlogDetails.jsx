@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useBlogDetails from "../../../hooks/useBlogDetails";
 import { Button, Card, Label, Textarea } from "flowbite-react";
 import useAuth from "../../../hooks/useAuth";
@@ -14,6 +14,7 @@ const BlogDetails = () => {
   const url2 = `http://localhost:5000/comments/${id}`;
   const { data, isLoading, isFetching, refetch } = useBlogDetails(url);
   //  get comments data
+
   const {
     data: data2,
     isLoading: isLoading2,
@@ -22,7 +23,6 @@ const BlogDetails = () => {
   } = useGetComments(url2);
 
   console.log(data2);
-
   //   handle comment
   const handleComment = (e) => {
     e.preventDefault();
@@ -77,6 +77,11 @@ const BlogDetails = () => {
           <span className="font-bold">Details : </span>
           {data.longDescription}
         </p>
+        {data.email === user.email && (
+          <Link to={`/updateblog/${data._id}`}>
+            <Button>Update</Button>
+          </Link>
+        )}
       </Card>
       <Card>
         <h2 className="text-2xl font-bold mb-10">All Comments: </h2>

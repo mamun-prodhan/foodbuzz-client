@@ -7,6 +7,7 @@ import AddBlogs from "../pages/AddBlogs/AddBlogs";
 import PrivateRoute from "./PrivateRoute";
 import BlogDetails from "../pages/Home/Home/BlogDetails";
 import AllBlogs from "../pages/AllBlogs/AllBlogs";
+import UpdateBlogs from "../pages/UpdateBlogs/UpdateBlogs";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
             <BlogDetails></BlogDetails>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/updateblog/:id",
+        element: <UpdateBlogs></UpdateBlogs>,
       },
       {
         path: "/allblogs",
