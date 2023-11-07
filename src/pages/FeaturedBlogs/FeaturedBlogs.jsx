@@ -1,11 +1,32 @@
 import { useEffect, useState } from "react";
 import useFeaturedBlogs from "../../hooks/useFeaturedBlogs";
+import DataTable from "react-data-table-component";
 
 const FeaturedBlogs = () => {
   const [topBlogs, setTopBlogs] = useState([]);
   const { data: blogData, isLoading, isFetching, refetch } = useFeaturedBlogs();
-  //   console.log(blogData);
   console.log(topBlogs);
+  //   react-data-table
+  const columns = [
+    {
+      name: "Serial No",
+      cell: (row, index) => index + 1,
+    },
+    {
+      name: "Blog Title",
+      cell: (row) => row.title,
+    },
+    {
+      name: "Blog Writer",
+      cell: (row) => row.ownerName,
+    },
+    {
+      name: "Writer Image",
+      cell: (row) => (
+        <img className="h-10 w-10 rounded-full" src={row.ownerImage}></img>
+      ),
+    },
+  ];
 
   useEffect(() => {
     if (blogData) {
@@ -32,13 +53,11 @@ const FeaturedBlogs = () => {
     );
   }
   return (
-    <div>
+    <div className="max-w-7xl mx-auto">
       <h2 className="text-5xl font-bold text-center my-10">
         This is Featured Blogs Page
       </h2>
-      {topBlogs?.map((blog) => (
-        <p key={blog._id}>{blog.title}</p>
-      ))}
+      <DataTable columns={columns} data={topBlogs}></DataTable>
     </div>
   );
 };
