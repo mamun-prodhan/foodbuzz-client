@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useAllBlogs from "../../hooks/useAllBlogs";
 import RecentBlogCard from "../Home/Home/RecentBlogCard";
-import { Label, Select } from "flowbite-react";
+import { Button, Label, Select, TextInput } from "flowbite-react";
 
 const AllBlogs = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -26,6 +26,16 @@ const AllBlogs = () => {
     const filterValue = e.target.value;
     setSelectedCategory(filterValue);
     console.log("handle filter clicked", filterValue);
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const searchedValue = e.target.search.value;
+    const filteredData = data.filter((item) =>
+      item.title.toLowerCase().includes(searchedValue.toLowerCase())
+    );
+    console.log("filtered data", filteredData);
+    e.target.reset();
   };
 
   useEffect(() => {
@@ -55,6 +65,20 @@ const AllBlogs = () => {
         <h2 className="text-4xl font-bold text-center my-20">No Data Found</h2>
       )}
       {/* search implement */}
+      <div className="md:max-w-sm mx-auto mt-10">
+        <form onSubmit={handleSearch}>
+          <TextInput
+            id="text"
+            type="text"
+            name="search"
+            placeholder="Search by title"
+            required
+          />
+          <Button className="mx-auto mt-5" type="submit">
+            Search
+          </Button>
+        </form>
+      </div>
       {/* filter */}
       <div className="w-40 my-10">
         <div className="mb-2 block">
