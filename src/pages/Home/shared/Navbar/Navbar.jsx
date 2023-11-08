@@ -73,7 +73,7 @@ const Navbar = () => {
       <div className="md:flex items-center justify-between bg-white py-4 md:px-10 px-7  ">
         <div className="font-bold text-2xl cursor-pointer flex items-center text-gray-800">
           <span>Logo</span>
-          Traveller
+          <span className="ms-5 text-[#FF6251]">FoodBuzz</span>
         </div>
         <ul className="md:flex md:items-center gap-5 hidden">{navLinks}</ul>
         <div className="pb-12 md:pb-0 hidden md:block">
