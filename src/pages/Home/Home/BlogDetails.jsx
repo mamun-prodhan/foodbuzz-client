@@ -22,7 +22,6 @@ const BlogDetails = () => {
     refetch: refetch2,
   } = useGetComments(url2);
 
-  console.log(data2);
   //   handle comment
   const handleComment = (e) => {
     e.preventDefault();
@@ -65,20 +64,20 @@ const BlogDetails = () => {
 
   return (
     <div className="max-w-7xl mx-auto my-10">
-      <Card className="mb-10" imgAlt="blog" imgSrc={data.imageURL}>
+      <Card className="mb-10" imgAlt="blog" imgSrc={data?.imageURL}>
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          {data.title}
+          {data?.title}
         </h5>
         <p className="font-normal text-gray-700 dark:text-gray-400">
           <span className="font-bold">Summary : </span>
-          {data.shortDescription}
+          {data?.shortDescription}
         </p>
         <p className="font-normal text-gray-700 dark:text-gray-400">
           <span className="font-bold">Details : </span>
-          {data.longDescription}
+          {data?.longDescription}
         </p>
-        {data.email === user.email && (
-          <Link to={`/updateblog/${data._id}`}>
+        {data?.email === user?.email && (
+          <Link to={`/updateblog/${data?._id}`}>
             <Button>Update</Button>
           </Link>
         )}

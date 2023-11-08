@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 
-const useAllWishlist = () => {
+const useAllWishlist = (url) => {
   const { data, isLoading, isFetching, refetch } = useQuery({
     queryKey: ["wishlist"],
     queryFn: async () => {
-      const data = await fetch("http://localhost:5000/wishlist");
+      const data = await fetch(url);
       return await data.json();
     },
   });

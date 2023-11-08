@@ -34,7 +34,6 @@ const RecentBlogCard = ({ blog }) => {
 
   const myWishlist = {
     email: user?.email,
-    _id,
     title,
     imageURL,
     category,
@@ -83,7 +82,7 @@ const RecentBlogCard = ({ blog }) => {
   };
 
   return (
-    <Card className="max-w-sm" imgAlt="image" imgSrc={imageURL}>
+    <Card className="" imgAlt="image" imgSrc={imageURL}>
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {title}
       </h5>
