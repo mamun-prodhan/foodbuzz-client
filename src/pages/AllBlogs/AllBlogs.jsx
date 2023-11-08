@@ -5,8 +5,11 @@ import { Button, Label, Select, TextInput } from "flowbite-react";
 
 const AllBlogs = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
+
   const { data, isLoading, isFetching, refetch } =
     useAllBlogs(selectedCategory);
+  const [loadedData, setLoadedData] = useState(data);
+  console.log("loaded data", loadedData);
 
   // console.log("selected category", selectedCategory);
   console.log(
@@ -34,13 +37,15 @@ const AllBlogs = () => {
     const filteredData = data.filter((item) =>
       item.title.toLowerCase().includes(searchedValue.toLowerCase())
     );
+    setLoadedData(filteredData);
     console.log("filtered data", filteredData);
     e.target.reset();
   };
 
   useEffect(() => {
     refetch();
-  }, [selectedCategory]);
+    setLoadedData(data);
+  }, [selectedCategory, data]);
 
   if (isLoading) {
     return (
@@ -61,9 +66,7 @@ const AllBlogs = () => {
       <h2 className="text-2xl md:text-5xl font-bold text-center my-10">
         All Blogs : {data?.length}
       </h2>
-      {!data.length && (
-        <h2 className="text-4xl font-bold text-center my-20">No Data Found</h2>
-      )}
+
       {/* search implement */}
       <div className="md:max-w-sm mx-auto mt-10">
         <form onSubmit={handleSearch}>
@@ -79,6 +82,9 @@ const AllBlogs = () => {
           </Button>
         </form>
       </div>
+      {!loadedData?.length && (
+        <h2 className="text-4xl font-bold text-center my-20">No Data Found</h2>
+      )}
       {/* filter */}
       <div className="w-40 my-10">
         <div className="mb-2 block">
@@ -101,7 +107,7 @@ const AllBlogs = () => {
       </div>
       {/* filter end */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {data?.map((blog) => (
+        {loadedData?.map((blog) => (
           <RecentBlogCard key={blog._id} blog={blog}></RecentBlogCard>
         ))}
       </div>
