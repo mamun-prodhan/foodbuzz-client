@@ -26,17 +26,19 @@ const AddBlogs = () => {
       ownerImage: user?.photoURL,
     };
     console.log(blog);
-    axios.post("http://localhost:5000/blogs", blog).then((res) => {
-      console.log(res?.data);
-      if (res?.data?.insertedId) {
-        Swal.fire({
-          title: "Successfull",
-          text: "Blog Posted Successfully",
-          icon: "success",
-        });
-        form.reset();
-      }
-    });
+    axios
+      .post("https://assignment-11-server-ten-pi.vercel.app/blogs", blog)
+      .then((res) => {
+        console.log(res?.data);
+        if (res?.data?.insertedId) {
+          Swal.fire({
+            title: "Successfull",
+            text: "Blog Posted Successfully",
+            icon: "success",
+          });
+          form.reset();
+        }
+      });
   };
   return (
     <div className=" px-4 md:px-0 mb-10">

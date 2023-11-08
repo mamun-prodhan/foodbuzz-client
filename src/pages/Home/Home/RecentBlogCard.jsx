@@ -50,7 +50,10 @@ const RecentBlogCard = ({ blog }) => {
       console.log("now add to wishlist", myWishlist);
       //   axios post here
       axios
-        .post("http://localhost:5000/wishlist", myWishlist)
+        .post(
+          "https://assignment-11-server-ten-pi.vercel.app/wishlist",
+          myWishlist
+        )
         .then((res) => {
           console.log(res?.data);
           if (res?.data?.insertedId) {
