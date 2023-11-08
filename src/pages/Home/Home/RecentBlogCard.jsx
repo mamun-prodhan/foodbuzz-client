@@ -84,7 +84,7 @@ const RecentBlogCard = ({ blog }) => {
 
   return (
     <Card className="" imgAlt="image" imgSrc={imageURL}>
-      <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <h5 className="text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {title}
       </h5>
       <p>

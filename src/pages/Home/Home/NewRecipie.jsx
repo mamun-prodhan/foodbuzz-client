@@ -1,11 +1,11 @@
 const NewRecipie = () => {
   return (
-    <div className="mt-10 md:mt-20 max-w-7xl mx-auto">
-      <h2 className="text-4xl font-bold text-center">
+    <div className="mt-10 md:mt-20 max-w-7xl mx-auto p-4 md:p-0">
+      <h2 className="text-2xl md:text-4xl font-bold text-center">
         New Recipes Every Wednesday
       </h2>
       <div className="mx-auto md:w-[60%]">
-        <p className="text-center my-10">
+        <p className="text-center my-5 md:my-10">
           Discover the exquisite blend of flavors in our signature recipe.
           Carefully seasoned meats, tender vegetables, and aromatic spices come
           together to create a dish that tantalizes your palate.

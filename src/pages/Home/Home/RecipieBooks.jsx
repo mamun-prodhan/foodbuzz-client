@@ -6,7 +6,7 @@ const RecipieBooks = () => {
   return (
     <div className="max-w-7xl mx-auto mt-10 md:mt-20">
       <div className="space-y-5">
-        <h2 className="text-4xl text-center font-bold">
+        <h2 className="text-2xl md:text-4xl text-center font-bold">
           Check out our newest <br />
           recipes books
         </h2>
