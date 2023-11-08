@@ -1,5 +1,6 @@
 import useRecentBlogs from "../../../hooks/useRecentBlogs";
 import Banner from "./Banner";
+import NewRecipie from "./NewRecipie";
 import NewsLetter from "./NewsLetter";
 import RecentBlogCard from "./RecentBlogCard";
 
@@ -23,6 +24,8 @@ const Home = () => {
           ))}
         </div>
       </div>
+
+      <NewRecipie></NewRecipie>
       <NewsLetter></NewsLetter>
     </div>
   );

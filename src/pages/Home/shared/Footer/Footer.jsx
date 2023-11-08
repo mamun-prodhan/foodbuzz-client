@@ -1,8 +1,10 @@
 const Footer = () => {
   return (
-    <div>
-      <h2>This is footer component</h2>
-    </div>
+    <footer className="bg-gray-800 text-white p-4">
+      <div className="container mx-auto text-center">
+        <p>All rights reserved &copy; 2023 FoodBuzz</p>
+      </div>
+    </footer>
   );
 };
 
