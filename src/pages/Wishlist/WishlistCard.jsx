@@ -1,8 +1,10 @@
 import { Button, Card } from "flowbite-react";
-import React from "react";
+
 import { Link } from "react-router-dom";
-const WishlistCard = ({ blog }) => {
+
+const WishlistCard = ({ blog, handleDeleteWishlist }) => {
   const {
+    _id,
     blog_id,
     email,
     title,
@@ -13,6 +15,7 @@ const WishlistCard = ({ blog }) => {
     createdAt,
     uploadedTime,
   } = blog;
+
   return (
     <Card className="" imgAlt="image" imgSrc={imageURL}>
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -34,7 +37,9 @@ const WishlistCard = ({ blog }) => {
         <Link to={`/blogdetails/${blog_id}`}>
           <Button>Details</Button>
         </Link>
-        <Button>Remove from Wishlist</Button>
+        <Button onClick={() => handleDeleteWishlist(_id)}>
+          Remove from Wishlist
+        </Button>
       </div>
     </Card>
   );
