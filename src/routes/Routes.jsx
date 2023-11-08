@@ -10,11 +10,13 @@ import AllBlogs from "../pages/AllBlogs/AllBlogs";
 import UpdateBlogs from "../pages/UpdateBlogs/UpdateBlogs";
 import FeaturedBlogs from "../pages/FeaturedBlogs/FeaturedBlogs";
 import Wishlist from "../pages/Wishlist/Wishlist";
+import ErrorPage from "../pages/Home/shared/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",

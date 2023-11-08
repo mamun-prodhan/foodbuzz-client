@@ -54,6 +54,7 @@ const AddBlogs = () => {
               </div>
               <TextInput
                 name="title"
+                style={{ zIndex: 1 }}
                 id="title"
                 type="text"
                 placeholder="Your Blog Title"

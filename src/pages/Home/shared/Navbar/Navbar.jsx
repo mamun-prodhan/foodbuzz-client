@@ -3,6 +3,7 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
 import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { Button } from "flowbite-react";
 
 const Navbar = () => {
   let [open, setOpen] = useState(false);
@@ -35,18 +36,18 @@ const Navbar = () => {
       </li>
       <li className="md:ml-8 text-xl md:my-0 mb-7">
         <NavLink
-          to="/addblogs"
-          className="text-gray-800 hover:text-gray-400 duration-500"
-        >
-          Add Blogs
-        </NavLink>
-      </li>
-      <li className="md:ml-8 text-xl md:my-0 mb-7">
-        <NavLink
           to="allblogs"
           className="text-gray-800 hover:text-gray-400 duration-500"
         >
           All Blogs
+        </NavLink>
+      </li>
+      <li className="md:ml-8 text-xl md:my-0 mb-7">
+        <NavLink
+          to="/addblogs"
+          className="text-gray-800 hover:text-gray-400 duration-500"
+        >
+          Add Blog
         </NavLink>
       </li>
       <li className="md:ml-8 text-xl md:my-0 mb-7">
@@ -77,21 +78,17 @@ const Navbar = () => {
         <ul className="md:flex md:items-center gap-5 hidden">{navLinks}</ul>
         <div className="pb-12 md:pb-0 hidden md:block">
           {!user && (
-            <>
+            <div className="flex items-center gap-5">
               <Link to="/login">
-                <button className="bg-indigo-600 text-white py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 duration-500">
-                  Login
-                </button>
+                <Button>Login</Button>
               </Link>
               <Link to="/register">
-                <button className="bg-indigo-600 text-white py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 duration-500">
-                  Register
-                </button>
+                <Button>Register</Button>
               </Link>
-            </>
+            </div>
           )}
           {user && (
-            <div className="flex items-center">
+            <div className="flex gap-5 items-center">
               <div className="flex items-center gap-2">
                 <img
                   className="h-8 w-8 rounded-full border-2"
@@ -104,12 +101,7 @@ const Navbar = () => {
                     : user.displayName}
                 </p>
               </div>
-              <button
-                onClick={handleSignOut}
-                className="bg-indigo-600 text-white py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 duration-500"
-              >
-                Logout
-              </button>
+              <Button onClick={handleSignOut}>Logout</Button>
             </div>
           )}
         </div>
@@ -125,19 +117,33 @@ const Navbar = () => {
           )}
         </div>
         <div
-          className={`md:hidden absolute bg-blue-600 left-0 w-full pl-9 transition-all duration-500 ease-in ${
+          className={`z-[1000] md:hidden absolute bg-cyan-100 left-0 w-full pl-9 transition-all duration-500 ease-in ${
             open ? "top-16 opacity-100" : "top-[-490px]"
           } opacity-0`}
         >
           <ul className="md:flex md:items-center gap-5">{navLinks}</ul>
-          <div className="pb-12 md:pb-0 flex gap-5">
-            <Link to="/login">
-              <button>Login</button>
-            </Link>
-            <Link to="/register">
-              <button>Register</button>
-            </Link>
-            {/* <Button>Logout</Button> */}
+          <div className="pb-12 md:pb-0 flex items-center gap-5">
+            {!user && (
+              <>
+                <Link to="/login">
+                  <Button>Login</Button>
+                </Link>
+                <Link to="/register">
+                  <Button>Register</Button>
+                </Link>
+              </>
+            )}
+            {user?.email && (
+              <>
+                <img
+                  className="h-8 w-8 rounded-full border-2"
+                  src={user.photoURL}
+                  alt=""
+                />
+
+                <Button onClick={handleSignOut}>Logout</Button>
+              </>
+            )}
           </div>
         </div>
       </div>

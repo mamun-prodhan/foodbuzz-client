@@ -30,6 +30,9 @@ const Register = () => {
     } else if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\/\|]/.test(password)) {
       setError("Don't have a special character");
       return;
+    } else if (!/\d/.test(password)) {
+      setError("Don't have a numeric character");
+      return;
     }
     console.log(name, photoURL, email, password);
     // create user using email and password
