@@ -4,6 +4,7 @@ import { useState } from "react";
 import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { Button } from "flowbite-react";
+import logo from "../../../../assets/logo.png";
 
 const Navbar = () => {
   let [open, setOpen] = useState(false);
@@ -72,7 +73,7 @@ const Navbar = () => {
     <div className="shadow-md w-full">
       <div className="md:flex items-center justify-between bg-white py-4 md:px-10 px-7  ">
         <div className="font-bold text-2xl cursor-pointer flex items-center text-gray-800">
-          <span>Logo</span>
+          <img className="w-10 h-10" src={logo} alt="" />
           <span className="ms-5 text-[#FF6251]">FoodBuzz</span>
         </div>
         <ul className="md:flex md:items-center gap-5 hidden">{navLinks}</ul>

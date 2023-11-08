@@ -3,6 +3,7 @@ import Banner from "./Banner";
 import NewRecipie from "./NewRecipie";
 import NewsLetter from "./NewsLetter";
 import RecentBlogCard from "./RecentBlogCard";
+import RecipieBooks from "./RecipieBooks";
 
 const Home = () => {
   const { data, isLoading, isFetching } = useRecentBlogs();
@@ -18,13 +19,13 @@ const Home = () => {
       <Banner></Banner>
       <div className="max-w-7xl mx-auto ">
         <h2 className="text-5xl font-bold text-center my-10">Recent Blogs</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {data?.map((blog) => (
             <RecentBlogCard key={blog._id} blog={blog}></RecentBlogCard>
           ))}
         </div>
       </div>
-
+      <RecipieBooks></RecipieBooks>
       <NewRecipie></NewRecipie>
       <NewsLetter></NewsLetter>
     </div>
