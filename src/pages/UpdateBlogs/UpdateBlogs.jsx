@@ -107,9 +107,11 @@ const UpdateBlogs = () => {
                 type="text"
                 required
               >
-                <option value="technology">Technology</option>
-                <option value="entertainment">Entertainment</option>
-                <option value="education">Education</option>
+                <option value="soup">Soup</option>
+                <option value="salad">Salad</option>
+                <option value="healthy">Healthy</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="dinner">Dinner</option>
               </Select>
             </div>
             <div>
