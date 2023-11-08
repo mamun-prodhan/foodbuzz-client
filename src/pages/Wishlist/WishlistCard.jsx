@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 const WishlistCard = ({ blog }) => {
   const {
-    _id,
+    blog_id,
     email,
     title,
     imageURL,
@@ -31,7 +31,7 @@ const WishlistCard = ({ blog }) => {
           : shortDescription}
       </p>
       <div className="flex gap-10">
-        <Link to={`/blogdetails/${_id}`}>
+        <Link to={`/blogdetails/${blog_id}`}>
           <Button>Details</Button>
         </Link>
         <Button>Remove from Wishlist</Button>

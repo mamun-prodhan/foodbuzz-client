@@ -34,6 +34,7 @@ const RecentBlogCard = ({ blog }) => {
 
   const myWishlist = {
     email: user?.email,
+    blog_id: _id,
     title,
     imageURL,
     category,
