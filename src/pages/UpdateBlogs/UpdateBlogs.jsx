@@ -1,6 +1,13 @@
 import { useParams } from "react-router-dom";
 import useBlogDetails from "../../hooks/useBlogDetails";
-import { Button, Label, Select, TextInput, Textarea } from "flowbite-react";
+import {
+  Button,
+  Label,
+  Select,
+  Spinner,
+  TextInput,
+  Textarea,
+} from "flowbite-react";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -54,9 +61,9 @@ const UpdateBlogs = () => {
 
   if (isLoading) {
     return (
-      <h2 className="text-5xl font-bold text-red-600 text-center my-20">
-        Loading
-      </h2>
+      <div className="text-center my-20">
+        <Spinner aria-label="Center-aligned Extra large spinner example" />
+      </div>
     );
   }
 

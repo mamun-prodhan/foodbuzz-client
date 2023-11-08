@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useAllBlogs from "../../hooks/useAllBlogs";
 import RecentBlogCard from "../Home/Home/RecentBlogCard";
-import { Button, Label, Select, TextInput } from "flowbite-react";
+import { Button, Label, Select, Spinner, TextInput } from "flowbite-react";
 
 const AllBlogs = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -49,9 +49,9 @@ const AllBlogs = () => {
 
   if (isLoading) {
     return (
-      <h2 className="text-5xl font-bold text-red-600 text-center my-20">
-        Loading
-      </h2>
+      <div className="text-center my-20">
+        <Spinner aria-label="Center-aligned Extra large spinner example" />
+      </div>
     );
   }
   //   if (isFetching) {
