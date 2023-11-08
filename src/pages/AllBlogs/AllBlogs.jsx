@@ -8,7 +8,7 @@ const AllBlogs = () => {
   const { data, isLoading, isFetching, refetch } =
     useAllBlogs(selectedCategory);
 
-  console.log("selected category", selectedCategory);
+  // console.log("selected category", selectedCategory);
   console.log(
     `https://assignment-11-server-ten-pi.vercel.app/allblogs/${selectedCategory}`
   );
@@ -67,6 +67,7 @@ const AllBlogs = () => {
           type="text"
           required
         >
+          <option value="all">All</option>
           <option value="soup">Soup</option>
           <option value="salad">Salad</option>
           <option value="healthy">Healthy</option>
