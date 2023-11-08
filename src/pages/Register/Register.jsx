@@ -64,11 +64,13 @@ const Register = () => {
     // create user catch
   };
   return (
-    <div>
-      <h2 className="text-5xl font-bold text-center mt-10">Please Register</h2>
+    <div className="mx-4 md:mx-0">
+      <h2 className="text-2xl md:text-5xl font-bold text-center mt-5 md:mt-10">
+        Please Register
+      </h2>
       <form
         onSubmit={handleRegister}
-        className="flex max-w-md flex-col gap-4 mx-auto mt-20"
+        className="flex max-w-md flex-col gap-4 mx-auto mt-10 md:mt-20"
       >
         <div>
           <div className="mb-2 block">

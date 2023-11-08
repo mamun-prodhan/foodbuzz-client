@@ -57,11 +57,13 @@ const Login = () => {
       });
   };
   return (
-    <div>
-      <h2 className="text-5xl font-bold text-center mt-10">Please Login</h2>
+    <div className="px-4 md:px-0">
+      <h2 className="text-2xl md:text-5xl font-bold text-center mt-5 md:mt-10">
+        Please Login
+      </h2>
       <form
         onSubmit={handleLogin}
-        className="flex max-w-md flex-col gap-4 mx-auto mt-20"
+        className="flex max-w-md flex-col gap-4 mx-auto mt-10 md:mt-20"
       >
         <div>
           <div className="mb-2 block">
