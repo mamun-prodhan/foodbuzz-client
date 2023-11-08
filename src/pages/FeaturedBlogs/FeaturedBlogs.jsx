@@ -53,9 +53,9 @@ const FeaturedBlogs = () => {
     );
   }
   return (
-    <div className="max-w-7xl mx-auto">
-      <h2 className="text-5xl font-bold text-center my-10">
-        Our Top 10 Featured Blogs
+    <div className="max-w-7xl mx-auto px-2 md:px-0 mb-10">
+      <h2 className="text-2xl md:text-5xl font-bold text-center my-5 md:my-10">
+        Featured Blogs
       </h2>
       <DataTable columns={columns} data={topBlogs}></DataTable>
     </div>

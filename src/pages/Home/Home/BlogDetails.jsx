@@ -63,7 +63,7 @@ const BlogDetails = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto my-10">
+    <div className="max-w-7xl mx-auto my-10 px-4 md:px-0">
       <Card className="mb-10" imgAlt="blog" imgSrc={data?.imageURL}>
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {data?.title}
@@ -83,7 +83,7 @@ const BlogDetails = () => {
         )}
       </Card>
       <Card>
-        <h2 className="text-2xl font-bold mb-10">All Comments: </h2>
+        <h2 className="text-xl md:text-2xl font-bold mb-10">All Comments: </h2>
         {isLoading2 ? (
           <>
             <h2 className="text-red-600 text-xl font-bold">Loading Comments</h2>

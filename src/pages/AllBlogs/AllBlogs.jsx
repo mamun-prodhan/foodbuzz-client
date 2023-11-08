@@ -45,8 +45,8 @@ const AllBlogs = () => {
   //     );
   //   }
   return (
-    <div className="max-w-7xl mx-auto">
-      <h2 className="text-5xl font-bold text-center my-10">
+    <div className="max-w-7xl mx-auto px-4 md:px-0">
+      <h2 className="text-2xl md:text-5xl font-bold text-center my-10">
         All Blogs : {data?.length}
       </h2>
       {!data.length && (

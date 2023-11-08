@@ -39,9 +39,9 @@ const AddBlogs = () => {
     });
   };
   return (
-    <div>
-      <h2 className="text-5xl font-bold text-center my-10">
-        This is Add Blogs page
+    <div className=" px-4 md:px-0 mb-10">
+      <h2 className="text-2xl md:text-5xl font-bold text-center my-5 md:my-10">
+        Add Blogs
       </h2>
       {/* form for add blogs */}
       <div className="max-w-7xl mx-auto">

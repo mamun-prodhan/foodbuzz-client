@@ -33,9 +33,9 @@ const WishlistCard = ({ blog, handleDeleteWishlist }) => {
           ? `${shortDescription.slice(0, 120)}...`
           : shortDescription}
       </p>
-      <div className="flex gap-10">
+      <div className="flex flex-col md:flex-row gap-5 md:gap-10">
         <Link to={`/blogdetails/${blog_id}`}>
-          <Button>Details</Button>
+          <Button className="w-full md:w-auto">Details</Button>
         </Link>
         <Button onClick={() => handleDeleteWishlist(_id)}>
           Remove from Wishlist
