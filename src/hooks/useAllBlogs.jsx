@@ -7,9 +7,15 @@ const useAllBlogs = (selectedCategory) => {
     queryKey: ["allBlogs"],
     queryFn: async () => {
       try {
-        const res = await axios.post("http://localhost:5000/allblogs", {
-          selectedCategory,
-        });
+        const res = await axios.post(
+          "https://assignment-11-server-weld-eta.vercel.app/allblogs",
+          {
+            selectedCategory,
+          },
+          {
+            withCredentials: true,
+          }
+        );
         return res.data;
       } catch (error) {
         console.log(error);

@@ -7,23 +7,30 @@ import Swal from "sweetalert2";
 
 const Wishlist = () => {
   const { user } = useAuth();
-  const url = `http://localhost:5000/wishlist?email=${user?.email}`;
+  const url = `/wishlist?email=${user?.email}`;
   const { data, isLoading, isFetching, refetch } = useAllWishlist(url);
 
   // delete wishlist
   const handleDeleteWishlist = (_id) => {
     console.log("handle wishlist delete clicked", _id);
-    axios.delete(`http://localhost:5000/wishlist/${_id}`).then((res) => {
-      console.log(res.data);
-      if (res?.data?.deletedCount > 0) {
-        refetch();
-        Swal.fire({
-          title: "Successfull",
-          text: "Successfully Deleted",
-          icon: "success",
-        });
-      }
-    });
+    axios
+      .delete(
+        `https://assignment-11-server-weld-eta.vercel.app/wishlist/${_id}`,
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        if (res?.data?.deletedCount > 0) {
+          refetch();
+          Swal.fire({
+            title: "Successfull",
+            text: "Successfully Deleted",
+            icon: "success",
+          });
+        }
+      });
   };
 
   if (isLoading) {

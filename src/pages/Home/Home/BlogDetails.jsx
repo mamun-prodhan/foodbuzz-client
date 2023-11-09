@@ -10,8 +10,8 @@ import CommentCard from "./CommentCard";
 const BlogDetails = () => {
   const { id } = useParams();
   const { user } = useAuth();
-  const url = `http://localhost:5000/allblogs/${id}`;
-  const url2 = `http://localhost:5000/comments/${id}`;
+  const url = `https://assignment-11-server-weld-eta.vercel.app/allblogs/${id}`;
+  const url2 = `https://assignment-11-server-weld-eta.vercel.app/comments/${id}`;
   const { data, isLoading, isFetching, refetch } = useBlogDetails(url);
   //  get comments data
 
@@ -36,7 +36,13 @@ const BlogDetails = () => {
     console.log(commentData);
     // post comment
     axios
-      .post("http://localhost:5000/comments", commentData)
+      .post(
+        "https://assignment-11-server-weld-eta.vercel.app/comments",
+        commentData,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {

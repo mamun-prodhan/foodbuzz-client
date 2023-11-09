@@ -12,7 +12,9 @@ const AllBlogs = () => {
   console.log("loaded data", loadedData);
 
   // console.log("selected category", selectedCategory);
-  console.log(`http://localhost:5000/allblogs/${selectedCategory}`);
+  console.log(
+    `https://assignment-11-server-weld-eta.vercel.app/allblogs/${selectedCategory}`
+  );
 
   //   get blogs data and set on state
   //   console.log(allBlogs);

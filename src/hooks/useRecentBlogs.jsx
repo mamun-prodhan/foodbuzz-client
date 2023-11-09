@@ -1,11 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const useRecentBlogs = () => {
   const { data, isLoading, isFetching, refetch } = useQuery({
     queryKey: ["recentBlogs"],
     queryFn: async () => {
-      const data = await fetch("http://localhost:5000/blogs");
-      return await data.json();
+      const response = await axios.get(
+        "https://assignment-11-server-weld-eta.vercel.app/blogs",
+        {
+          withCredentials: true,
+        }
+      );
+      return response.data;
     },
   });
   return { data, isLoading, isFetching, refetch };
