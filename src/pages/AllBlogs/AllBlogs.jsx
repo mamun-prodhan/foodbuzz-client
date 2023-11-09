@@ -12,9 +12,7 @@ const AllBlogs = () => {
   console.log("loaded data", loadedData);
 
   // console.log("selected category", selectedCategory);
-  console.log(
-    `https://assignment-11-server-ten-pi.vercel.app/allblogs/${selectedCategory}`
-  );
+  console.log(`http://localhost:5000/allblogs/${selectedCategory}`);
 
   //   get blogs data and set on state
   //   console.log(allBlogs);

@@ -30,7 +30,7 @@ const RecentBlogCard = ({ blog }) => {
   };
 
   const uploadedTime = isoDate.toLocaleString(undefined, options);
-  console.log(uploadedTime);
+  // console.log(uploadedTime);
 
   const myWishlist = {
     email: user?.email,
@@ -50,10 +50,7 @@ const RecentBlogCard = ({ blog }) => {
       console.log("now add to wishlist", myWishlist);
       //   axios post here
       axios
-        .post(
-          "https://assignment-11-server-ten-pi.vercel.app/wishlist",
-          myWishlist
-        )
+        .post("http://localhost:5000/wishlist", myWishlist)
         .then((res) => {
           console.log(res?.data);
           if (res?.data?.insertedId) {

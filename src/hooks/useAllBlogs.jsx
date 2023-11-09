@@ -7,12 +7,9 @@ const useAllBlogs = (selectedCategory) => {
     queryKey: ["allBlogs"],
     queryFn: async () => {
       try {
-        const res = await axios.post(
-          "https://assignment-11-server-ten-pi.vercel.app/allblogs",
-          {
-            selectedCategory,
-          }
-        );
+        const res = await axios.post("http://localhost:5000/allblogs", {
+          selectedCategory,
+        });
         return res.data;
       } catch (error) {
         console.log(error);

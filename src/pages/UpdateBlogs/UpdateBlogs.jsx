@@ -16,7 +16,7 @@ const UpdateBlogs = () => {
   const { id } = useParams();
   console.log(id);
   const { user } = useAuth();
-  const url = `https://assignment-11-server-ten-pi.vercel.app/allblogs/${id}`;
+  const url = `http://localhost:5000/allblogs/${id}`;
   const { data, isLoading, isFetching, refetch } = useBlogDetails(url);
   console.log(data);
   //   form data
@@ -39,10 +39,7 @@ const UpdateBlogs = () => {
     // updating the data
 
     axios
-      .put(
-        `https://assignment-11-server-ten-pi.vercel.app/updatedblogs/${id}`,
-        updatedBlog
-      )
+      .put(`http://localhost:5000/updatedblogs/${id}`, updatedBlog)
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount > 0) {
