@@ -1,3 +1,4 @@
+import { Spinner } from "flowbite-react";
 import useAuth from "../hooks/useAuth";
 import { Navigate } from "react-router-dom";
 
@@ -5,10 +6,8 @@ const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
   if (loading) {
     return (
-      <div>
-        <p className="text-5xl font-bold text-red-600 text-center">
-          Loading...
-        </p>
+      <div className="text-center my-20">
+        <Spinner aria-label="Center-aligned Extra large spinner example" />
       </div>
     );
   }

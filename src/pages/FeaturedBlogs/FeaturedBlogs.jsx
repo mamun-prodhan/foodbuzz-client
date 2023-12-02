@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import useFeaturedBlogs from "../../hooks/useFeaturedBlogs";
 import DataTable from "react-data-table-component";
+import { Spinner } from "flowbite-react";
 
 const FeaturedBlogs = () => {
   const [topBlogs, setTopBlogs] = useState([]);
-  const { data: blogData, isLoading, isFetching, refetch } = useFeaturedBlogs();
-  console.log(topBlogs);
+  const { data: blogData, isLoading } = useFeaturedBlogs();
+  // console.log(topBlogs);
   //   react-data-table
   const columns = [
     {
@@ -47,9 +48,9 @@ const FeaturedBlogs = () => {
 
   if (isLoading) {
     return (
-      <h2 className="text-5xl font-bold text-red-600 text-center my-20">
-        Loading
-      </h2>
+      <div className="text-center my-20">
+        <Spinner aria-label="Center-aligned Extra large spinner example" />
+      </div>
     );
   }
   return (

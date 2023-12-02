@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import RecentBlogCard from "../Home/Home/RecentBlogCard";
 import WishlistCard from "./WishlistCard";
 import Swal from "sweetalert2";
+import { Spinner } from "flowbite-react";
 
 const Wishlist = () => {
   const { user } = useAuth();
@@ -35,9 +36,9 @@ const Wishlist = () => {
 
   if (isLoading) {
     return (
-      <h2 className="text-5xl font-bold text-red-600 text-center my-10">
-        Loading
-      </h2>
+      <div className="text-center my-20">
+        <Spinner aria-label="Center-aligned Extra large spinner example" />
+      </div>
     );
   }
 

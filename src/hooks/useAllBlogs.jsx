@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const useAllBlogs = (selectedCategory) => {
-  console.log("useAllBlogs", selectedCategory);
+  // console.log("useAllBlogs", selectedCategory);
   const { data, isLoading, isFetching, refetch } = useQuery({
     queryKey: ["allBlogs"],
     queryFn: async () => {

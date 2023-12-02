@@ -21,7 +21,7 @@ const Banner = () => {
           breakfast, including whole grains, fruits, and protein, to provide
           sustained energy and nutrients.
         </p>
-        <button className="px-4 md:px-8 lg:px-8 py-2 md:py-3 lg:py-4 bg-[#F15E2D] text-[#FFFFFF] border border-[#F15E2D] hover:text-[#F15E2D] hover:bg-[#FFF] duration-300 text-xs  md:text-base font-bold mt-4 md:mt-6 rounded-md">
+        <button className="px-4 md:px-8 lg:px-8 py-2 md:py-3 lg:py-4 bg-[#F15E2D] text-[#FFFFFF] border border-[#F15E2D] hover:text-[#F15E2D] hover:bg-[#FFF] cursor-pointer duration-300 text-xs  md:text-base font-bold mt-4 md:mt-6 rounded-md">
           Read More
         </button>
 

@@ -33,7 +33,7 @@ const BlogDetails = () => {
       userImage: user.photoURL,
       email: user.email,
     };
-    console.log(commentData);
+    // console.log(commentData);
     // post comment
     axios
       .post(
@@ -44,7 +44,7 @@ const BlogDetails = () => {
         }
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.insertedId) {
           refetch2();
           e.target.reset();

@@ -25,13 +25,13 @@ const AddBlogs = () => {
       ownerName: user?.displayName,
       ownerImage: user?.photoURL,
     };
-    console.log(blog);
+    // console.log(blog);
     axios
       .post("https://assignment-11-server-weld-eta.vercel.app/blogs", blog, {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res?.data);
+        // console.log(res?.data);
         if (res?.data?.insertedId) {
           Swal.fire({
             title: "Successfull",

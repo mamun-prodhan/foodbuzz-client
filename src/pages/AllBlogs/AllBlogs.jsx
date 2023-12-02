@@ -9,7 +9,7 @@ const AllBlogs = () => {
   const { data, isLoading, isFetching, refetch } =
     useAllBlogs(selectedCategory);
   const [loadedData, setLoadedData] = useState(data);
-  console.log("loaded data", loadedData);
+  // console.log("loaded data", loadedData);
 
   // console.log("selected category", selectedCategory);
   console.log(
@@ -28,7 +28,7 @@ const AllBlogs = () => {
   const handleFilter = (e) => {
     const filterValue = e.target.value;
     setSelectedCategory(filterValue);
-    console.log("handle filter clicked", filterValue);
+    // console.log("handle filter clicked", filterValue);
   };
 
   const handleSearch = (e) => {
@@ -38,7 +38,7 @@ const AllBlogs = () => {
       item.title.toLowerCase().includes(searchedValue.toLowerCase())
     );
     setLoadedData(filteredData);
-    console.log("filtered data", filteredData);
+    // console.log("filtered data", filteredData);
     e.target.reset();
   };
 
